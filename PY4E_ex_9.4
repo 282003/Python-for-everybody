@@ -1,0 +1,32 @@
+fname = input("Enter file name:")
+
+try:
+    fhand = open(fname)
+except:
+    print("file can bot be opened",fname)
+    exit()
+counts = dict()
+lst = []
+
+for line in fhand:
+    if line.startswith("From:"):
+        words = line.rstrip().split()
+        lst.append(words[1])
+        
+for word in lst:
+    counts[word] = counts.get(word,0) + 1
+            
+all_values = list(counts.values())
+max_value = max(all_values)
+
+all_keys = list(counts.keys())
+
+for key in all_keys:
+    if counts[key]==max_value:
+      print(key, counts[key])
+    else:
+        continue
+
+       
+        
+        
